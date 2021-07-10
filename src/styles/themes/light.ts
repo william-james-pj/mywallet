@@ -5,7 +5,7 @@ const light = {
     secundary: "rgba(29, 29, 29, 1)",
 
     interactive: "rgba(228, 245, 252, 1)",
-    disabled: "rgba(202, 202, 202, 1)",
+    disabled: "rgba(200, 200, 200, 1)",
 
     text: "rgba(41, 41, 46, 1)",
 

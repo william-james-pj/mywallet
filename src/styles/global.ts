@@ -16,4 +16,11 @@ export default createGlobalStyle`
   body, input, button, textarea {
     font: 400 16px 'Robot', sans-serif;
   }
+
+  ul {
+      list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
 `;
