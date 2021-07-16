@@ -2,7 +2,7 @@ import styled, { DefaultTheme } from "styled-components";
 import * as fonts from "../../config/fonts";
 import { respondToDown, respondToUp } from "../../config/respondTo";
 
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 interface IIconProps {
   active: boolean;
@@ -21,7 +21,7 @@ interface INavMenuQueryProps extends INavMenuProps {
 }
 
 export const Container = styled.div`
-  background: ${(props) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.background};
   transition: 2s;
 
   ${respondToUp.sm`
@@ -126,7 +126,7 @@ export const NavIcons = styled.div<IIconProps>`
     transition: 0.6s;
 
     box-shadow: ${active ? "0px 6px 8px 2px rgba(0, 0, 0, 0.3)" : "none"};
-    background: ${theme.colors.primary};
+    background: ${theme.colors.background};
     color: ${active ? theme.colors.secundary : theme.colors.disabled};
 
     :hover {

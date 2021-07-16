@@ -4,6 +4,8 @@ const dark = {
     primary: "",
     secundary: "",
 
+    background: "",
+
     interactive: "",
     disabled: "",
 

@@ -7,6 +7,8 @@ declare module "styled-components" {
       primary: string;
       secundary: string;
 
+      background: string;
+
       interactive: string;
       disabled: string;
 
