@@ -1,3 +1,11 @@
+import { Header } from "../../components/Header";
+
+import * as S from "./styles";
+
 export function Dashboard() {
-  return <h1>Dashboard</h1>;
+  return (
+    <S.Container>
+      <Header title={"Dashboard"} />
+    </S.Container>
+  );
 }

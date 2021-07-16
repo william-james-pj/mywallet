@@ -1,3 +1,11 @@
+import { Header } from "../../components/Header";
+
+import * as S from "./styles";
+
 export function Wallet() {
-  return <h1>Wallet</h1>;
+  return (
+    <S.Container>
+      <Header title={"Wallet"} />
+    </S.Container>
+  );
 }
