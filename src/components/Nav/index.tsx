@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +15,7 @@ import * as S from "./styled";
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -26,16 +28,16 @@ export function Nav() {
         <S.NavMenu menuOpen={menuOpen}>
           <S.NavList>
             <S.NavItem>
-              <S.NavLink>
-                <S.NavIcons active={true}>
+              <S.NavLink to="/">
+                <S.NavIcons active={location.pathname === '/' ? true : false}>
                   <FontAwesomeIcon icon={faHome} size="lg" />
                 </S.NavIcons>
               </S.NavLink>
             </S.NavItem>
 
             <S.NavItem>
-              <S.NavLink>
-                <S.NavIcons active={false}>
+              <S.NavLink to="/wallet">
+                <S.NavIcons active={location.pathname === '/wallet' ? true : false}>
                   <FontAwesomeIcon icon={faWallet} size="lg" />
                 </S.NavIcons>
               </S.NavLink>

@@ -2,6 +2,8 @@ import styled, { DefaultTheme } from "styled-components";
 import * as fonts from "../../config/fonts";
 import { respondToDown, respondToUp } from "../../config/respondTo";
 
+import {Link} from 'react-router-dom'
+
 interface IIconProps {
   active: boolean;
 }
@@ -134,7 +136,7 @@ export const NavIcons = styled.div<IIconProps>`
   `}
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
