@@ -1,3 +1,5 @@
+import { PickAMonth } from "../PickAMonth";
+
 import * as S from "./styles";
 
 interface HeaderProps {
@@ -7,10 +9,13 @@ interface HeaderProps {
 export function Header({ title }: HeaderProps) {
   return (
     <S.Container>
-      <S.Diveder></S.Diveder>
-      <S.TextContainer>
-        <S.Title>{title}</S.Title>
-      </S.TextContainer>
+      <S.RowContainer>
+        <S.Diveder></S.Diveder>
+        <S.TextContainer>
+          <S.Title>{title}</S.Title>
+        </S.TextContainer>
+      </S.RowContainer>
+      <PickAMonth />
     </S.Container>
   );
 }
