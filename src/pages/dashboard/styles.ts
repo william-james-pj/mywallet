@@ -23,16 +23,27 @@ const graphics = styled.div`
 export const GraphicsHeader = styled(graphics)`
   width: 100%;
   height: 150px;
+  padding: 1.5rem;
+`;
+
+export const RowContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const MessageDiv = styled(graphics)`
+  width: 50%;
+  height: 200px;
+`;
+
+export const Relationship = styled(graphics)`
+  width: 40%;
+  height: 200px;
 `;
 
 export const LineGraphic = styled(graphics)`
   width: 100%;
   height: 300px;
-`;
-
-export const ContainerRow = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
 
 export const PizzaGraphic = styled(graphics)`
