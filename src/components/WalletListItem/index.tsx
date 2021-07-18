@@ -1,4 +1,6 @@
 import * as I from "../../utils/Interfaces";
+import { formatCurrency } from "../../utils/formatCurrency";
+import { formatDateYear } from "../../utils/formatDate";
 
 import * as S from "./styles";
 
@@ -16,10 +18,10 @@ export function WalletListItem({ item }: IProps) {
         <S.TextBold>{item.type}</S.TextBold>
       </S.NameContainer>
       <S.DataContainer>
-        <S.TextDisabled>{item.date}</S.TextDisabled>
+        <S.TextDisabled>{formatDateYear(item.date)}</S.TextDisabled>
       </S.DataContainer>
       <S.ValueContainer>
-        <S.TextBold>{`R$ ${item.amount}`}</S.TextBold>
+        <S.TextBold>{formatCurrency(Number(item.amount))}</S.TextBold>
       </S.ValueContainer>
     </S.Container>
   );

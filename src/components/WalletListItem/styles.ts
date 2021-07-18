@@ -14,11 +14,11 @@ export const Container = styled.div`
 const Div = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
 `;
 
 export const IconContainer = styled(Div)`
   flex: 1;
+  justify-content: center;
 `;
 
 export const Icon = styled.div`
@@ -29,11 +29,11 @@ export const Icon = styled.div`
 `;
 
 export const NameContainer = styled(Div)`
-  flex: 2;
+  flex: 3;
 `;
 
 export const DataContainer = styled(Div)`
-  flex: 1;
+  flex: 2;
 `;
 
 export const ValueContainer = styled(Div)`

@@ -1,6 +1,7 @@
 import GlobalStyle from "./styles/global";
 
 import { ColorModeContext } from "./contexts/ColorModeContext";
+import { WalletContextProvider } from "./contexts/WalletContextProvider";
 
 import { Router } from "react-router-dom";
 import { history } from "./services/history";
@@ -11,7 +12,9 @@ function App() {
     <ColorModeContext>
       <GlobalStyle />
       <Router history={history}>
-        <Home />
+        <WalletContextProvider>
+          <Home />
+        </WalletContextProvider>
       </Router>
     </ColorModeContext>
   );

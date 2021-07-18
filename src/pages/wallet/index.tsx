@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
-
 import { Header } from "../../components/Header";
 import { WalletListBox } from "../../components/WalletListBox";
-import * as I from "../../utils/Interfaces";
-
-import { data } from "../../database";
+import { useWallet } from "../../hooks/useWallet";
 
 import * as S from "./styles";
 
 export function Wallet() {
-  const [gains, setGains] = useState<I.IWalletItemDB>([]);
-  const [expenses, setExpenses] = useState<I.IWalletItemDB>([]);
-
-  const getData = () => {
-    setGains(data.gains);
-    setExpenses(data.expenses);
-  };
-
-  useEffect(() => {
-    getData();
-    return () => {};
-  }, []);
+  const { gains, expenses } = useWallet();
 
   return (
     <S.Container>
