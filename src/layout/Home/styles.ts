@@ -1,6 +1,6 @@
 import styled from "styled-components";
 // import * as fonts from '../../config/fonts';
-// import { respondToDown } from "../../config/respondTo";
+import { respondToDown } from "../../config/respondTo";
 
 export const Container = styled.div`
   max-width: 1120px;
@@ -16,4 +16,8 @@ export const Content = styled.div`
   padding: 1.5rem 1rem 2rem;
   overflow-y: auto;
   overflow-x: hidden;
+
+  ${respondToDown.sm`
+    padding: 1.5rem 1rem 3.25rem;
+  `}
 `;

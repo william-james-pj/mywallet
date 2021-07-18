@@ -10,8 +10,12 @@ export function SelectInput({ options }: ISelectProps) {
   return (
     <S.Container>
       <select>
-        {options.map((option) => {
-          return <option value={option.value}>{option.value}</option>;
+        {options.map((option, index) => {
+          return (
+            <option key={`${option.value}-${index}`} value={option.value}>
+              {option.value}
+            </option>
+          );
         })}
       </select>
     </S.Container>
