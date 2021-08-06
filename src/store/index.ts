@@ -2,10 +2,12 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
 import wallet from "./wallet";
+import selectedDate from "./selectedDate";
 
 const store = configureStore({
   reducer: {
     wallet,
+    selectedDate,
   },
 });
 
