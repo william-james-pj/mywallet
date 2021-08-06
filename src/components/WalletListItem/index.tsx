@@ -1,6 +1,6 @@
-import { IWalletItem } from "../../../../@types/types";
-import { formatCurrency } from "../../../../utils/formatCurrency";
-import { formatDateYear } from "../../../../utils/formatDate";
+import { IWalletItem } from "../../@types/types";
+import { formatCurrency } from "../../utils/formatCurrency";
+import { formatDateYear } from "../../utils/formatDate";
 
 import * as S from "./styles";
 

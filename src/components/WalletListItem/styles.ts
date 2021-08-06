@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as fonts from "../../../../config/fonts";
+import * as fonts from "../../config/fonts";
 
 export const Container = styled.div`
   width: 100%;
@@ -34,10 +34,12 @@ export const NameContainer = styled(Div)`
 
 export const DataContainer = styled(Div)`
   flex: 2;
+  justify-content: center;
 `;
 
 export const ValueContainer = styled(Div)`
   flex: 2;
+  justify-content: flex-end;
 `;
 
 export const TextBold = styled.p`

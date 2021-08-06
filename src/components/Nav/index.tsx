@@ -7,6 +7,7 @@ import {
   faWallet,
   faTimes,
   faGripHorizontal,
+  faCoins,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IconColorMode } from "./IconColorMode";
@@ -36,11 +37,21 @@ export function Nav() {
             </S.NavItem>
 
             <S.NavItem>
-              <S.NavLink to="/wallet">
+              <S.NavLink to="/cashin">
                 <S.NavIcons
-                  active={location.pathname === "/wallet" ? true : false}
+                  active={location.pathname === "/cashin" ? true : false}
                 >
                   <FontAwesomeIcon icon={faWallet} size="lg" />
+                </S.NavIcons>
+              </S.NavLink>
+            </S.NavItem>
+
+            <S.NavItem>
+              <S.NavLink to="/cashout">
+                <S.NavIcons
+                  active={location.pathname === "/cashout" ? true : false}
+                >
+                  <FontAwesomeIcon icon={faCoins} size="lg" />
                 </S.NavIcons>
               </S.NavLink>
             </S.NavItem>

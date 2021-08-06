@@ -1,14 +1,13 @@
-import { Header } from "../../components/Header";
-
 import { useReduxSelector } from "../../hooks/useRedux";
-import { formatMonth } from "../../utils/formatMonth";
 
-import { WalletListBox } from "./WalletListBox";
+import { Header } from "../../components/Header";
+import { WalletListItem } from "../../components/WalletListItem";
+import { formatMonth } from "../../utils/formatMonth";
 import { IWalletItemDB } from "../../@types/types";
 
 import * as S from "./styles";
 
-export function Wallet() {
+export function CashOut() {
   const walletState = useReduxSelector((state) => state.wallet);
   const dateState = useReduxSelector((state) => state.selectedDate);
 
@@ -26,16 +25,11 @@ export function Wallet() {
 
   return (
     <S.Container>
-      <Header title={"Wallet"} />
+      <Header title={"Cash out"} />
       <S.RowContainer>
-        <WalletListBox
-          titleHeader="Entradas"
-          items={filteredDate(walletState.gains)}
-        />
-        <WalletListBox
-          titleHeader="Saídas"
-          items={filteredDate(walletState.expenses)}
-        />
+        {filteredDate(walletState.expenses).map((item, index) => {
+          return <WalletListItem item={item} key={`${item.type}-${index}`} />;
+        })}
       </S.RowContainer>
     </S.Container>
   );
