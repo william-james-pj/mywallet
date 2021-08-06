@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import { HeaderGraphics } from "../../components/HeaderGraphics";
+import { HeaderGraphics } from "./HeaderGraphics";
 
 import * as S from "./styles";
 

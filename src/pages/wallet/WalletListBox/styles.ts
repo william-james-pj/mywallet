@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import * as fonts from "../../config/fonts";
-import { respondToDown } from "../../config/respondTo";
+import * as fonts from "../../../config/fonts";
+import { respondToDown } from "../../../config/respondTo";
 
 interface ListContainerProps {
   active: boolean;

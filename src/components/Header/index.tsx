@@ -1,4 +1,4 @@
-import { PickAMonth } from "../PickAMonth";
+import { PickAMonth } from "./PickAMonth";
 
 import * as S from "./styles";
 

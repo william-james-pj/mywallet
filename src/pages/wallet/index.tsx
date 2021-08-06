@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import { WalletListBox } from "../../components/WalletListBox";
+import { WalletListBox } from "./WalletListBox";
 
 import { useWalletSelector } from "../../hooks/useWallet";
 

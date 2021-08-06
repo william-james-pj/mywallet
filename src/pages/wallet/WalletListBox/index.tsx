@@ -3,13 +3,13 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
-import { WalletListItem } from "../WalletListItem";
-import * as I from "../../utils/Interfaces";
+import { WalletListItem } from "./WalletListItem";
+import { IWalletItemDB } from "../../../@types/types";
 
 import * as S from "./styles";
 
 interface IProps {
-  items: I.IWalletItemDB;
+  items: IWalletItemDB;
   titleHeader: string;
 }
 

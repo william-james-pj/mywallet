@@ -1,6 +1,6 @@
-import * as I from "../../utils/Interfaces";
+import { IWalletItemDB } from "../../@types/types";
 
 export interface WalletState {
-  gains: I.IWalletItemDB;
-  expenses: I.IWalletItemDB;
+  gains: IWalletItemDB;
+  expenses: IWalletItemDB;
 }

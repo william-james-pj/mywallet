@@ -1,4 +1,4 @@
-import * as I from "../utils/Interfaces";
+import { IWalletItemDB } from "../@types/types";
 
 export const data = {
   gains: [
@@ -62,7 +62,7 @@ export const data = {
       frequency: "recorrente",
       date: "2020-07-10",
     },
-  ] as I.IWalletItemDB,
+  ] as IWalletItemDB,
   expenses: [
     {
       type: "Energia elétrica",
@@ -358,5 +358,5 @@ export const data = {
       frequency: "eventual",
       date: "2020-07-19",
     },
-  ] as I.IWalletItemDB,
+  ] as IWalletItemDB,
 };

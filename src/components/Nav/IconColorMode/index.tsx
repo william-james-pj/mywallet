@@ -1,4 +1,4 @@
-import { useDarkMode } from "../../hooks/useDarkMode";
+import { useDarkMode } from "../../../hooks/useDarkMode";
 
 import * as S from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

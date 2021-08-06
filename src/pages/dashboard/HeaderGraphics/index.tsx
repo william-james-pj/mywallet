@@ -1,5 +1,5 @@
-import { TextGraphicsHeader } from "../TextGraphicsHeader";
-import { PieChartHeader } from "../PieChartHeader";
+import { TextGraphicsHeader } from "./TextGraphicsHeader";
+import { PieChartHeader } from "./PieChartHeader";
 
 import * as S from "./styles";
 

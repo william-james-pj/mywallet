@@ -9,7 +9,7 @@ import {
   faGripHorizontal,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { IconColorMode } from "../../components/IconColorMode";
+import { IconColorMode } from "./IconColorMode";
 
 import * as S from "./styled";
 
@@ -29,7 +29,7 @@ export function Nav() {
           <S.NavList>
             <S.NavItem>
               <S.NavLink to="/">
-                <S.NavIcons active={location.pathname === '/' ? true : false}>
+                <S.NavIcons active={location.pathname === "/" ? true : false}>
                   <FontAwesomeIcon icon={faHome} size="lg" />
                 </S.NavIcons>
               </S.NavLink>
@@ -37,7 +37,9 @@ export function Nav() {
 
             <S.NavItem>
               <S.NavLink to="/wallet">
-                <S.NavIcons active={location.pathname === '/wallet' ? true : false}>
+                <S.NavIcons
+                  active={location.pathname === "/wallet" ? true : false}
+                >
                   <FontAwesomeIcon icon={faWallet} size="lg" />
                 </S.NavIcons>
               </S.NavLink>

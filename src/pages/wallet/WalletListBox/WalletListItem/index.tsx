@@ -1,11 +1,11 @@
-import * as I from "../../utils/Interfaces";
-import { formatCurrency } from "../../utils/formatCurrency";
-import { formatDateYear } from "../../utils/formatDate";
+import { IWalletItem } from "../../../../@types/types";
+import { formatCurrency } from "../../../../utils/formatCurrency";
+import { formatDateYear } from "../../../../utils/formatDate";
 
 import * as S from "./styles";
 
 interface IProps {
-  item: I.IWalletItem;
+  item: IWalletItem;
 }
 
 export function WalletListItem({ item }: IProps) {

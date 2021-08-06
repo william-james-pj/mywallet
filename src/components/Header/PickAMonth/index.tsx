@@ -1,4 +1,4 @@
-import { SelectInput } from "../SelectInput";
+import { SelectInput } from "../../SelectInput";
 import * as S from "./styles";
 
 export function PickAMonth() {
