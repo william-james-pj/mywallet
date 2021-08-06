@@ -1,8 +1,5 @@
-import { useContext } from "react";
-import { WalletContext } from "../contexts/WalletContextProvider";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "../store";
 
-export function useWallet() {
-  const value = useContext(WalletContext);
-
-  return value;
-}
+export const useWalletDispatch = () => useDispatch<AppDispatch>();
+export const useWalletSelector: TypedUseSelectorHook<RootState> = useSelector;
