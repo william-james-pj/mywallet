@@ -1,34 +1,111 @@
-import { TextGraphicsHeader } from "./TextGraphicsHeader";
-import { PieChartHeader } from "./PieChartHeader";
+import { useEffect, useState } from "react";
+
+import { TextAmount } from "./TextAmount";
+import { TextIcon } from "./TextIcon";
+import { useReduxSelector } from "../../../hooks/useRedux";
+import { filteredDate } from "../../../utils/filteredDate";
+import { round } from "../../../utils/round";
+
+import { faWallet, faShare, faReply } from "@fortawesome/free-solid-svg-icons";
 
 import * as S from "./styles";
 
 export function HeaderGraphics() {
+  const walletState = useReduxSelector((state) => state.wallet);
+  const dateState = useReduxSelector((state) => state.selectedDate);
+
+  const [balance, setBalance] = useState("");
+  const [income, setIncome] = useState("");
+  const [expense, setExpense] = useState("");
+
+  useEffect(() => {
+    function loaderData() {
+      const filteredGains = filteredDate(
+        walletState.gains,
+        dateState.monthSelected,
+        dateState.yearSelected
+      );
+      const filteredExpenses = filteredDate(
+        walletState.expenses,
+        dateState.monthSelected,
+        dateState.yearSelected
+      );
+
+      let totalGains = 0;
+      let totalExpenses = 0;
+
+      filteredGains.forEach((item) => {
+        totalGains += parseFloat(item.amount);
+      });
+
+      filteredExpenses.forEach((item) => {
+        totalExpenses += parseFloat(item.amount);
+      });
+
+      totalGains = round(totalGains);
+      totalExpenses = round(totalExpenses);
+
+      setIncome(totalGains.toString());
+      setExpense(totalExpenses.toString());
+    }
+    loaderData();
+    return () => {};
+  }, [
+    dateState.monthSelected,
+    dateState.yearSelected,
+    walletState.gains,
+    walletState.expenses,
+  ]);
+
+  useEffect(() => {
+    function loaderBalance() {
+      let totalGains = 0;
+      let totalExpense = 0;
+
+      walletState.gains.forEach((item) => {
+        totalGains += parseFloat(item.amount);
+      });
+
+      walletState.expenses.forEach((item) => {
+        totalExpense += parseFloat(item.amount);
+      });
+
+      let balance = round(totalGains - totalExpense);
+      setBalance(balance.toString());
+    }
+    loaderBalance();
+    return () => {};
+  }, [walletState.gains, walletState.expenses]);
+
   return (
     <S.Container>
-      <S.ItemHeader>
-        <TextGraphicsHeader
-          header={"Saldo"}
-          content={"4000"}
-          footer={"Em 02/jun"}
-        />
-        <PieChartHeader percentage={60} />
+      <S.ItemHeader type={0}>
+        <TextAmount header={"Balance"} content={balance} colorWhite={true} />
+        <TextIcon header={"Until today"} icon={faWallet} colorWhite={true} />
       </S.ItemHeader>
-      <S.ItemHeader>
-        <TextGraphicsHeader
-          header={"Total entrada"}
-          content={"4000"}
-          footer={"Em 02/jun"}
+      <S.ItemHeader type={1}>
+        <TextAmount
+          header={"Total income"}
+          content={income}
+          colorWhite={false}
         />
-        <PieChartHeader percentage={40} />
+        <TextIcon
+          header={`In ${dateState.monthSelected}`}
+          icon={faReply}
+          colorWhite={false}
+        />
       </S.ItemHeader>
-      <S.ItemHeader>
-        <TextGraphicsHeader
-          header={"Total saída"}
-          content={"4000"}
-          footer={"Em 02/jun"}
+      <S.ItemHeader type={2}>
+        <TextAmount
+          header={"Total expense"}
+          content={expense}
+          colorWhite={false}
         />
-        <PieChartHeader percentage={20} />
+        <TextIcon
+          header={`In ${dateState.monthSelected}`}
+          icon={faShare}
+          colorWhite={false}
+        />
       </S.ItemHeader>
     </S.Container>
   );

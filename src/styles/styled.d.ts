@@ -8,9 +8,12 @@ declare module "styled-components" {
       secundary: string;
 
       background: string;
+      expense: string;
+      income: string;
 
       interactive: string;
       disabled: string;
+      disabledBlack: string;
 
       text: string;
 

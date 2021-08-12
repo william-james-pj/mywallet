@@ -2,8 +2,7 @@ import { useReduxSelector } from "../../hooks/useRedux";
 
 import { Header } from "../../components/Header";
 import { WalletListItem } from "../../components/WalletListItem";
-import { formatMonth } from "../../utils/formatMonth";
-import { IWalletItemDB } from "../../@types/types";
+import { filteredDate } from "../../utils/filteredDate";
 
 import * as S from "./styles";
 
@@ -11,23 +10,15 @@ export function CashOut() {
   const walletState = useReduxSelector((state) => state.wallet);
   const dateState = useReduxSelector((state) => state.selectedDate);
 
-  const filteredDate = (items: IWalletItemDB): IWalletItemDB => {
-    return items.filter((item) => {
-      const date = new Date(item.date);
-      const month = formatMonth(date);
-      const year = String(date.getFullYear());
-
-      return (
-        month === dateState.monthSelected && year === dateState.yearSelected
-      );
-    });
-  };
-
   return (
     <S.Container>
       <Header title={"Cash out"} />
       <S.RowContainer>
-        {filteredDate(walletState.expenses).map((item, index) => {
+        {filteredDate(
+          walletState.expenses,
+          dateState.monthSelected,
+          dateState.yearSelected
+        ).map((item, index) => {
           return <WalletListItem item={item} key={`${item.type}-${index}`} />;
         })}
       </S.RowContainer>

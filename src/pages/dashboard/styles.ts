@@ -20,10 +20,9 @@ const graphics = styled.div`
   border-radius: 20px;
 `;
 
-export const GraphicsHeader = styled(graphics)`
+export const GraphicsHeader = styled.div`
   width: 100%;
   height: 150px;
-  padding: 1.5rem;
 `;
 
 export const RowContainer = styled.div`
