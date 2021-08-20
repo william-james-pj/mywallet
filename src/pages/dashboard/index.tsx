@@ -1,5 +1,7 @@
 import { Header } from "../../components/Header";
 import { HeaderGraphics } from "./HeaderGraphics";
+import { Message } from "./Message";
+import { Relationship } from "./Relationship";
 
 import * as S from "./styles";
 
@@ -12,8 +14,12 @@ export function Dashboard() {
           <HeaderGraphics />
         </S.GraphicsHeader>
         <S.RowContainer>
-          <S.MessageDiv></S.MessageDiv>
-          <S.Relationship></S.Relationship>
+          <S.MessageDiv>
+            <Message />
+          </S.MessageDiv>
+          <S.RelationshipContainer>
+            <Relationship />
+          </S.RelationshipContainer>
         </S.RowContainer>
         <S.LineGraphic></S.LineGraphic>
         <S.RowContainer>

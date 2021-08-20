@@ -31,12 +31,12 @@ export const RowContainer = styled.div`
 `;
 
 export const MessageDiv = styled(graphics)`
-  width: 50%;
+  width: 40%;
   height: 200px;
 `;
 
-export const Relationship = styled(graphics)`
-  width: 40%;
+export const RelationshipContainer = styled(graphics)`
+  width: 50%;
   height: 200px;
 `;
 
