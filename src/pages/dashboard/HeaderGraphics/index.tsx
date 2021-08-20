@@ -6,7 +6,10 @@ import { useReduxSelector } from "../../../hooks/useRedux";
 import { filteredDate } from "../../../utils/filteredDate";
 import { round } from "../../../utils/round";
 
-import { faWallet, faShare, faReply } from "@fortawesome/free-solid-svg-icons";
+import {
+  faWallet,
+  faLongArrowAltRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 import * as S from "./styles";
 
@@ -80,31 +83,23 @@ export function HeaderGraphics() {
   return (
     <S.Container>
       <S.ItemHeader type={0}>
-        <TextAmount header={"Balance"} content={balance} colorWhite={true} />
-        <TextIcon header={"Until today"} icon={faWallet} colorWhite={true} />
+        <TextAmount header={"Balance"} content={balance} />
+        <TextIcon header={"Until today"} icon={faWallet} typeBox={4} />
       </S.ItemHeader>
       <S.ItemHeader type={1}>
-        <TextAmount
-          header={"Total income"}
-          content={income}
-          colorWhite={false}
-        />
+        <TextAmount header={"Total income"} content={income} />
         <TextIcon
           header={`In ${dateState.monthSelected}`}
-          icon={faReply}
-          colorWhite={false}
+          icon={faLongArrowAltRight}
+          typeBox={2}
         />
       </S.ItemHeader>
       <S.ItemHeader type={2}>
-        <TextAmount
-          header={"Total expense"}
-          content={expense}
-          colorWhite={false}
-        />
+        <TextAmount header={"Total expense"} content={expense} />
         <TextIcon
           header={`In ${dateState.monthSelected}`}
-          icon={faShare}
-          colorWhite={false}
+          icon={faLongArrowAltRight}
+          typeBox={3}
         />
       </S.ItemHeader>
     </S.Container>

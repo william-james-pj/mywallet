@@ -10,7 +10,6 @@ const dark = {
 
     interactive: "",
     disabled: "",
-    disabledBlack: "rgba(94, 94, 94, 1)",
 
     text: "",
 

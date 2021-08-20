@@ -1,20 +1,19 @@
 import * as S from "./styles";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface IProps {
   header: string;
   icon: IconDefinition;
-  colorWhite: boolean;
+  typeBox: number;
 }
 
-export function TextIcon({ header, icon, colorWhite }: IProps) {
+export function TextIcon({ header, icon, typeBox }: IProps) {
   return (
     <S.Container>
-      <S.HeaderText colorWhite={colorWhite}>{header}</S.HeaderText>
-      <S.Content colorWhite={colorWhite}>
-        <FontAwesomeIcon icon={icon} size="lg" />
+      <S.HeaderText>{header}</S.HeaderText>
+      <S.Content>
+        <S.Icon icon={icon} size="lg" typeBox={typeBox} />
       </S.Content>
     </S.Container>
   );

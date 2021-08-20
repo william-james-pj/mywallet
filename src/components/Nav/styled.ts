@@ -1,8 +1,13 @@
 import styled, { DefaultTheme } from "styled-components";
 import * as fonts from "../../config/fonts";
 import { respondToDown, respondToUp } from "../../config/respondTo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Link } from "react-router-dom";
+
+interface IIconRotation {
+  rotate: number;
+}
 
 interface IIconProps {
   active: boolean;
@@ -121,9 +126,15 @@ export const NavIcons = styled.div<IIconProps>`
 
   ${({ active, theme }: IIconQueryProps) => respondToUp.sm`
     margin-bottom: 0;
-    padding: 0.7rem;
     border-radius: 50%;
     transition: 0.6s;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     box-shadow: ${active ? "0px 6px 8px 2px rgba(0, 0, 0, 0.3)" : "none"};
     background: ${theme.colors.background};
@@ -187,4 +198,9 @@ export const NavToggle = styled.div`
   ${respondToUp.sm`
       display: none;
   `}
+`;
+
+export const Icon = styled(FontAwesomeIcon)<IIconRotation>`
+  transform: ${(props) =>
+    props.rotate !== 1 ? `rotate(${props.rotate}deg)` : ""};
 `;

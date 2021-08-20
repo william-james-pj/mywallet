@@ -10,7 +10,6 @@ const light = {
 
     interactive: "rgba(228, 245, 252, 1)",
     disabled: "rgba(200, 200, 200, 1)",
-    disabledBlack: "rgba(94, 94, 94, 1)",
 
     text: "rgba(41, 41, 46, 1)",
 

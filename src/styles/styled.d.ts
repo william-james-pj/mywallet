@@ -13,7 +13,6 @@ declare module "styled-components" {
 
       interactive: string;
       disabled: string;
-      disabledBlack: string;
 
       text: string;
 

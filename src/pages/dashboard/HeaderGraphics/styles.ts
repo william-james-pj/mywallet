@@ -32,7 +32,7 @@ export const ItemHeader = styled.div<IItemHeaderProps>`
 
   background: ${(props) =>
     props.type === IItemHeaderEnum.balance
-      ? props.theme.colors.secundary
+      ? props.theme.colors.primary
       : props.type === IItemHeaderEnum.expense
       ? props.theme.colors.expense
       : props.theme.colors.income};

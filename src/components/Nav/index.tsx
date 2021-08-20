@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faWallet,
+  faLongArrowAltRight,
   faTimes,
   faGripHorizontal,
-  faCoins,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IconColorMode } from "./IconColorMode";
@@ -31,7 +29,7 @@ export function Nav() {
             <S.NavItem>
               <S.NavLink to="/">
                 <S.NavIcons active={location.pathname === "/" ? true : false}>
-                  <FontAwesomeIcon icon={faHome} size="lg" />
+                  <S.Icon icon={faHome} size="lg" rotate={1} />
                 </S.NavIcons>
               </S.NavLink>
             </S.NavItem>
@@ -41,7 +39,7 @@ export function Nav() {
                 <S.NavIcons
                   active={location.pathname === "/cashin" ? true : false}
                 >
-                  <FontAwesomeIcon icon={faWallet} size="lg" />
+                  <S.Icon icon={faLongArrowAltRight} size="lg" rotate={-40} />
                 </S.NavIcons>
               </S.NavLink>
             </S.NavItem>
@@ -51,21 +49,21 @@ export function Nav() {
                 <S.NavIcons
                   active={location.pathname === "/cashout" ? true : false}
                 >
-                  <FontAwesomeIcon icon={faCoins} size="lg" />
+                  <S.Icon icon={faLongArrowAltRight} size="lg" rotate={40} />
                 </S.NavIcons>
               </S.NavLink>
             </S.NavItem>
           </S.NavList>
 
           <S.NavClose onClick={handleMenu}>
-            <FontAwesomeIcon icon={faTimes} size="1x" />
+            <S.Icon icon={faTimes} size="1x" rotate={1} />
           </S.NavClose>
         </S.NavMenu>
 
         <S.NavBtns>
           <IconColorMode />
           <S.NavToggle onClick={handleMenu}>
-            <FontAwesomeIcon icon={faGripHorizontal} size="lg" />
+            <S.Icon icon={faGripHorizontal} size="lg" rotate={1} />
           </S.NavToggle>
         </S.NavBtns>
       </S.NavContainer>
