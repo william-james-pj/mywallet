@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { useTheme } from "styled-components";
 
 import { useReduxSelector } from "../../../hooks/useRedux";
-import { filteredDate } from "../../../utils/filteredDate";
+import { totalCurrency } from "../../../utils/totalCurrency";
 import { round } from "../../../utils/round";
 
 import * as S from "./styles";
@@ -21,27 +21,12 @@ export function Relationship() {
 
   useEffect(() => {
     function loaderData() {
-      const filteredGains = filteredDate(
+      let { totalExpenses, totalGains } = totalCurrency(
+        walletState.expenses,
         walletState.gains,
         dateState.monthSelected,
         dateState.yearSelected
       );
-      const filteredExpenses = filteredDate(
-        walletState.expenses,
-        dateState.monthSelected,
-        dateState.yearSelected
-      );
-
-      let totalGains = 0;
-      let totalExpenses = 0;
-
-      filteredGains.forEach((item) => {
-        totalGains += parseFloat(item.amount);
-      });
-
-      filteredExpenses.forEach((item) => {
-        totalExpenses += parseFloat(item.amount);
-      });
 
       totalGains = round(totalGains) || 50;
       totalExpenses = round(totalExpenses) || 50;

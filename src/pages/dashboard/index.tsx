@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header";
 import { HeaderGraphics } from "./HeaderGraphics";
+import { HistoryChart } from "./HistoryChart";
 import { Message } from "./Message";
 import { Relationship } from "./Relationship";
 
@@ -21,7 +22,9 @@ export function Dashboard() {
             <Relationship />
           </S.RelationshipContainer>
         </S.RowContainer>
-        <S.LineGraphic></S.LineGraphic>
+        <S.LineGraphic>
+          <HistoryChart />
+        </S.LineGraphic>
         <S.RowContainer>
           <S.PizzaGraphic></S.PizzaGraphic>
           <S.PizzaGraphic></S.PizzaGraphic>

@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import * as fonts from "../../../../config/fonts";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
 
-interface IIconProps {
-  typeBox: number;
+interface IIconProps extends FontAwesomeIconProps {
+  rotate: number;
 }
 
 export const Container = styled.div`
@@ -28,9 +31,9 @@ export const Content = styled.div`
 
 export const Icon = styled(FontAwesomeIcon)<IIconProps>`
   transform: ${(props) =>
-    props.typeBox === 2
+    props.rotate === 2
       ? `rotate(-40deg)`
-      : props.typeBox === 3
+      : props.rotate === 3
       ? `rotate(40deg)`
       : ""};
 `;

@@ -1,10 +1,8 @@
+import { IObjInput } from "../../@types/types";
+
 export interface SelectedDateState {
-  years: objInput[];
-  months: objInput[];
+  years: IObjInput[];
+  months: IObjInput[];
   yearSelected: string;
   monthSelected: string;
-}
-
-interface objInput {
-  value: string;
 }

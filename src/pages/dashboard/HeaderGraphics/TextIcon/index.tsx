@@ -13,7 +13,7 @@ export function TextIcon({ header, icon, typeBox }: IProps) {
     <S.Container>
       <S.HeaderText>{header}</S.HeaderText>
       <S.Content>
-        <S.Icon icon={icon} size="lg" typeBox={typeBox} />
+        <S.Icon icon={icon} size="lg" rotate={typeBox} />
       </S.Content>
     </S.Container>
   );

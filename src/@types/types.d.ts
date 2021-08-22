@@ -6,3 +6,7 @@ export interface IWalletItem {
 }
 
 export interface IWalletItemDB extends Array<IWalletItem> {}
+
+export interface IObjInput {
+  value: string;
+}
