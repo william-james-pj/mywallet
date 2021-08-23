@@ -1,5 +1,6 @@
 import styled from "styled-components";
 // import * as fonts from '../../config/fonts';
+import { respondToDown } from "../../config/respondTo";
 
 export const Container = styled.div``;
 
@@ -23,21 +24,39 @@ const graphics = styled.div`
 export const GraphicsHeader = styled.div`
   width: 100%;
   height: 150px;
+
+  ${respondToDown.sm`
+    height: auto;
+  `}
 `;
 
 export const RowContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  ${respondToDown.sm`
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  `}
 `;
 
 export const MessageDiv = styled(graphics)`
   width: 40%;
   height: 200px;
+
+  ${respondToDown.sm`
+    width: 100%;
+  `}
 `;
 
 export const RelationshipContainer = styled(graphics)`
   width: 50%;
   height: 200px;
+
+  ${respondToDown.sm`
+    width: 100%;
+  `}
 `;
 
 export const LineGraphic = styled(graphics)`
@@ -48,4 +67,8 @@ export const LineGraphic = styled(graphics)`
 export const PizzaGraphic = styled(graphics)`
   width: 45%;
   height: 250px;
+
+  ${respondToDown.sm`
+    width: 100%;
+  `}
 `;

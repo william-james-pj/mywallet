@@ -1,5 +1,6 @@
 import styled from "styled-components";
 // import * as fonts from "../../config/fonts";
+import { respondToDown } from "../../../config/respondTo";
 
 enum IItemHeaderEnum {
   balance,
@@ -17,6 +18,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+
+  ${respondToDown.sm`
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
 
 export const ItemHeader = styled.div<IItemHeaderProps>`
@@ -36,4 +42,9 @@ export const ItemHeader = styled.div<IItemHeaderProps>`
       : props.type === IItemHeaderEnum.expense
       ? props.theme.colors.expense
       : props.theme.colors.income};
+
+  ${respondToDown.sm`
+    width: 100%;
+    padding: 1.563rem 1.25rem;
+  `}
 `;

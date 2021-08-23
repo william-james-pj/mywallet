@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as fonts from "../../../config/fonts";
+import { respondToDown } from "../../../config/respondTo";
 
 interface ISquare {
   income: boolean;
@@ -19,11 +20,14 @@ export const Graphics = styled.div`
 `;
 
 export const GraphicsText = styled.div`
-  padding: 1.875rem;
+  flex: 1;
+  padding-left: 1rem;
 
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const GraphicsTitle = styled.p`
@@ -63,4 +67,14 @@ export const Description = styled.p`
   color: ${(props) => props.theme.colors.text};
   font-size: ${fonts.sm};
   margin-left: 0.625rem;
+`;
+
+export const GraphicsChart = styled.div`
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+
+  ${respondToDown.md`
+    flex: 2;
+  `}
 `;
