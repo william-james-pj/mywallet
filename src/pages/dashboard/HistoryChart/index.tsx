@@ -32,18 +32,32 @@ export function HistoryChart() {
 
   const [data, setData] = useState<IDatas>([]);
 
-  const sliceMonths = (months: IObjInput[], monthSelected: string) => {
-    let arrayMonths = months.map((a) => a.value);
+  const sliceMonths = (
+    months: IObjInput[],
+    monthSelected: string,
+    yearSelected: string
+  ) => {
+    let arrayMonths = months.map((a) => ({
+      month: a.value,
+      year: yearSelected,
+    }));
 
-    const index = arrayMonths.findIndex((element) => element === monthSelected);
+    const index = arrayMonths.findIndex(
+      (element) => element.month === monthSelected
+    );
 
     if (index - 6 < 0) {
       const missingNumber = 6 - index;
 
-      const missingMonths = arrayMonths.slice(
+      let missingMonths = arrayMonths.slice(
         months.length - missingNumber,
         months.length
       );
+
+      missingMonths = missingMonths.map((item) => ({
+        month: item.month,
+        year: (Number(item.year) - 1).toString(),
+      }));
 
       const monthsSlice = arrayMonths.slice(index - index, index + 1);
 
@@ -54,18 +68,22 @@ export function HistoryChart() {
   };
 
   useEffect(() => {
-    const months = sliceMonths(dateState.months, dateState.monthSelected);
+    const months = sliceMonths(
+      dateState.months,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
 
     let data: IDatas = months.map((item) => {
       const { totalExpenses, totalGains } = totalCurrency(
         walletState.expenses,
         walletState.gains,
-        item,
-        dateState.yearSelected
+        item.month,
+        item.year
       );
 
       return {
-        month: item,
+        month: item.month,
         expense: totalExpenses,
         income: totalGains,
       };
