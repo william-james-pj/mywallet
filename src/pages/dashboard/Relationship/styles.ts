@@ -34,6 +34,7 @@ export const GraphicsTitle = styled.p`
   font-weight: 700;
   color: ${(props) => props.theme.colors.text};
   font-size: ${fonts.normal};
+  transition: 1.5s;
 `;
 
 export const IndicatorContainer = styled.div`
@@ -54,12 +55,14 @@ export const Square = styled.div<ISquare>`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 1.5s;
 `;
 
 export const SquareText = styled.p`
   font-weight: 700;
   color: ${(props) => props.theme.colors.white};
   font-size: ${fonts.sm};
+  transition: 1.5s;
 `;
 
 export const Description = styled.p`
@@ -67,6 +70,7 @@ export const Description = styled.p`
   color: ${(props) => props.theme.colors.text};
   font-size: ${fonts.sm};
   margin-left: 0.625rem;
+  transition: 1.5s;
 `;
 
 export const GraphicsChart = styled.div`

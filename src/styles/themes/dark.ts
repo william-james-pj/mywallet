@@ -1,20 +1,20 @@
 const dark = {
   title: "dark",
   colors: {
-    primary: "",
-    secundary: "",
+    primary: "rgba(68, 71, 90, 1)",
+    secundary: "rgba(238, 238, 238, 1)",
 
-    background: "",
-    expense: "rgba(255, 248, 179, 1)",
-    income: "rgba(178, 254, 210, 1)",
+    background: "rgba(40, 42, 54, 1)",
+    expense: "rgba(224, 211, 158, 1)",
+    income: "rgba(175, 186, 131, 1)",
 
-    interactive: "",
-    disabled: "",
+    interactive: "rgba(250, 115, 97, 1)",
+    disabled: "rgba(154, 154, 154, 1)",
 
-    text: "",
+    text: "rgba(248, 248, 242, 1)",
 
-    white: "",
-    red: "",
+    white: "rgba(255, 255, 255, 1)",
+    red: "rgba(181, 7, 23, 1)",
   },
 };
 

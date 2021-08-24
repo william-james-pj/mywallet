@@ -9,6 +9,10 @@ interface IIconProps extends FontAwesomeIconProps {
   rotate: number;
 }
 
+interface IColor {
+  colorType: number;
+}
+
 export const Container = styled.div`
   flex: 1;
   display: flex;
@@ -16,10 +20,14 @@ export const Container = styled.div`
   align-items: flex-end;
 `;
 
-export const HeaderText = styled.p`
+export const HeaderText = styled.p<IColor>`
   font-weight: 700;
-  color: ${(props) => props.theme.colors.disabled};
+  color: ${(props) =>
+    props.colorType === 4
+      ? props.theme.colors.disabled
+      : props.theme.colors.background};
   font-size: ${fonts.sm};
+  transition: 1.5s;
 `;
 
 export const Content = styled.div`
@@ -36,4 +44,5 @@ export const Icon = styled(FontAwesomeIcon)<IIconProps>`
       : props.rotate === 3
       ? `rotate(40deg)`
       : ""};
+  transition: 1.5s;
 `;

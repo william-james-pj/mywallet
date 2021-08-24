@@ -83,11 +83,11 @@ export function HeaderGraphics() {
   return (
     <S.Container>
       <S.ItemHeader type={0}>
-        <TextAmount header={"Balance"} content={balance} />
+        <TextAmount header={"Balance"} content={balance} typeBox={1}/>
         <TextIcon header={"Until today"} icon={faWallet} typeBox={4} />
       </S.ItemHeader>
       <S.ItemHeader type={1}>
-        <TextAmount header={"Total income"} content={income} />
+        <TextAmount header={"Total income"} content={income} typeBox={2}/>
         <TextIcon
           header={`In ${dateState.monthSelected}`}
           icon={faLongArrowAltRight}
@@ -95,7 +95,7 @@ export function HeaderGraphics() {
         />
       </S.ItemHeader>
       <S.ItemHeader type={2}>
-        <TextAmount header={"Total expense"} content={expense} />
+        <TextAmount header={"Total expense"} content={expense} typeBox={2}/>
         <TextIcon
           header={`In ${dateState.monthSelected}`}
           icon={faLongArrowAltRight}

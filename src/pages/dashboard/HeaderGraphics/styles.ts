@@ -32,6 +32,7 @@ export const ItemHeader = styled.div<IItemHeaderProps>`
   padding: 1rem 1.25rem;
   box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
+  transition: 1.5s;
 
   display: flex;
   align-items: center;

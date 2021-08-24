@@ -17,6 +17,7 @@ export const Diveder = styled.div`
   border-left: 3px solid ${(props) => props.theme.colors.secundary};
   border-radius: 10px;
   margin-right: 1rem;
+  transition: 1.5s;
 `;
 
 export const TextContainer = styled.div``;
@@ -25,4 +26,5 @@ export const Title = styled.p`
   font-weight: 700;
   font-size: ${fonts.xl};
   color: ${(props) => props.theme.colors.secundary};
+  transition: 1.5s;
 `;

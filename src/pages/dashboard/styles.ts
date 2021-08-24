@@ -16,6 +16,7 @@ export const GraphicsContainer = styled.div`
 
 const graphics = styled.div`
   box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  transition: 1.5s;
 
   background: ${(props) => props.theme.colors.primary};
   border-radius: 20px;

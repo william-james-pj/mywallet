@@ -27,7 +27,7 @@ interface INavMenuQueryProps extends INavMenuProps {
 
 export const Container = styled.div`
   background: ${(props) => props.theme.colors.background};
-  transition: 2s;
+  transition: 1.3s;
 
   ${respondToUp.sm`
     width: 90px;

@@ -11,7 +11,7 @@ interface IProps {
 export function TextIcon({ header, icon, typeBox }: IProps) {
   return (
     <S.Container>
-      <S.HeaderText>{header}</S.HeaderText>
+      <S.HeaderText colorType={typeBox}>{header}</S.HeaderText>
       <S.Content>
         <S.Icon icon={icon} size="lg" rotate={typeBox} />
       </S.Content>

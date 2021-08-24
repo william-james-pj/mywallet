@@ -12,5 +12,6 @@ export const Container = styled.div`
     font-weight: 700;
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    transition: 1.5s;
   }
 `;

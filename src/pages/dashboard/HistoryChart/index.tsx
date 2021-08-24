@@ -107,7 +107,12 @@ export function HistoryChart() {
             bottom: 0,
           }}
         >
-          <XAxis dataKey="month" axisLine={false} tickLine={false} />
+          <XAxis
+            dataKey="month"
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: theme.colors.text }}
+          />
           <YAxis hide={true} axisLine={false} tickLine={false} />
           <Tooltip />
           <Legend
