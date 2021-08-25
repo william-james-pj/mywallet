@@ -65,7 +65,7 @@ export const LineGraphic = styled(graphics)`
   height: 300px;
 `;
 
-export const PizzaGraphic = styled(graphics)`
+export const BarGraphic = styled(graphics)`
   width: 45%;
   height: 250px;
 

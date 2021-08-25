@@ -6,6 +6,8 @@ import { useReduxSelector } from "../../../hooks/useRedux";
 import { totalCurrency } from "../../../utils/totalCurrency";
 import { round } from "../../../utils/round";
 
+import { Indicator } from "../../../components/Indicator";
+
 import * as S from "./styles";
 
 export function Relationship() {
@@ -59,18 +61,8 @@ export function Relationship() {
       <S.Graphics>
         <S.GraphicsText>
           <S.GraphicsTitle>Relationship</S.GraphicsTitle>
-          <S.IndicatorContainer>
-            <S.Square income={true}>
-              <S.SquareText>{`${income}%`}</S.SquareText>
-            </S.Square>
-            <S.Description>Income</S.Description>
-          </S.IndicatorContainer>
-          <S.IndicatorContainer>
-            <S.Square income={false}>
-              <S.SquareText>{`${expense}%`}</S.SquareText>
-            </S.Square>
-            <S.Description>Expense</S.Description>
-          </S.IndicatorContainer>
+          <Indicator income={true} value={income} description={"Income"} />
+          <Indicator income={false} value={expense} description={"Expense"} />
         </S.GraphicsText>
         <S.GraphicsChart>
           <ResponsiveContainer width="100%" height="100%">
