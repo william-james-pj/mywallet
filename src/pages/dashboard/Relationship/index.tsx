@@ -1,68 +1,29 @@
-import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { useTheme } from "styled-components";
 
-import { useReduxSelector } from "../../../hooks/useRedux";
-import { totalCurrency } from "../../../utils/totalCurrency";
-import { round } from "../../../utils/round";
+import { IObjData } from "../../../@types/types";
 
 import { Indicator } from "../../../components/Indicator";
 
 import * as S from "./styles";
 
-export function Relationship() {
-  const walletState = useReduxSelector((state) => state.wallet);
-  const dateState = useReduxSelector((state) => state.selectedDate);
+interface IRelationshipProps {
+  data: IObjData[];
+}
 
-  const [income, setIncome] = useState("");
-  const [expense, setExpense] = useState("");
-  const [data, setData] = useState([{ value: 50 }, { value: 50 }]);
-
-  const theme = useTheme();
-  const COLORS = [theme.colors.income, theme.colors.expense];
-
-  useEffect(() => {
-    function loaderData() {
-      let { totalExpenses, totalGains } = totalCurrency(
-        walletState.expenses,
-        walletState.gains,
-        dateState.monthSelected,
-        dateState.yearSelected
-      );
-
-      totalGains = round(totalGains) || 50;
-      totalExpenses = round(totalExpenses) || 50;
-
-      const total = totalGains + totalExpenses;
-
-      setIncome(Math.round((totalGains * 100) / total).toString());
-      setExpense(Math.round((totalExpenses * 100) / total).toString());
-
-      setData([
-        {
-          value: Math.round((totalGains * 100) / total),
-        },
-        {
-          value: Math.round((totalExpenses * 100) / total),
-        },
-      ]);
-    }
-    loaderData();
-    return () => {};
-  }, [
-    dateState.monthSelected,
-    dateState.yearSelected,
-    walletState.gains,
-    walletState.expenses,
-  ]);
-
+export function Relationship({ data }: IRelationshipProps) {
   return (
     <S.Container>
       <S.Graphics>
         <S.GraphicsText>
           <S.GraphicsTitle>Relationship</S.GraphicsTitle>
-          <Indicator income={true} value={income} description={"Income"} />
-          <Indicator income={false} value={expense} description={"Expense"} />
+          {data.map((item) => (
+            <Indicator
+              key={`${item.name}-${item.percent}`}
+              income={item.name === "Income" ? true : false}
+              value={item.percent}
+              description={item.name}
+            />
+          ))}
         </S.GraphicsText>
         <S.GraphicsChart>
           <ResponsiveContainer width="100%" height="100%">
@@ -73,13 +34,10 @@ export function Relationship() {
                 cy="50%"
                 labelLine={false}
                 outerRadius={80}
-                dataKey="value"
+                dataKey="amount"
               >
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
+                {data.map((indicator) => (
+                  <Cell key={`cell-${indicator.name}`} fill={indicator.color} />
                 ))}
               </Pie>
             </PieChart>

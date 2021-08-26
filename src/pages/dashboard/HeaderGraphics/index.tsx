@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 import { TextAmount } from "./TextAmount";
 import { TextIcon } from "./TextIcon";
@@ -17,77 +17,66 @@ export function HeaderGraphics() {
   const walletState = useReduxSelector((state) => state.wallet);
   const dateState = useReduxSelector((state) => state.selectedDate);
 
-  const [balance, setBalance] = useState("");
-  const [income, setIncome] = useState("");
-  const [expense, setExpense] = useState("");
+  const balance = useMemo(() => {
+    let totalGains = 0;
+    let totalExpense = 0;
 
-  useEffect(() => {
-    function loaderData() {
-      const filteredGains = filteredDate(
-        walletState.gains,
-        dateState.monthSelected,
-        dateState.yearSelected
-      );
-      const filteredExpenses = filteredDate(
-        walletState.expenses,
-        dateState.monthSelected,
-        dateState.yearSelected
-      );
+    walletState.gains.forEach((item) => {
+      totalGains += parseFloat(item.amount);
+    });
 
-      let totalGains = 0;
-      let totalExpenses = 0;
+    walletState.expenses.forEach((item) => {
+      totalExpense += parseFloat(item.amount);
+    });
 
-      filteredGains.forEach((item) => {
-        totalGains += parseFloat(item.amount);
-      });
+    let balance = round(totalGains - totalExpense);
+    return balance.toString();
+  }, [walletState.expenses, walletState.gains]);
 
-      filteredExpenses.forEach((item) => {
-        totalExpenses += parseFloat(item.amount);
-      });
+  const income = useMemo(() => {
+    const filteredGains = filteredDate(
+      walletState.gains,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
 
-      totalGains = round(totalGains);
-      totalExpenses = round(totalExpenses);
+    let totalGains = 0;
 
-      setIncome(totalGains.toString());
-      setExpense(totalExpenses.toString());
-    }
-    loaderData();
-    return () => {};
-  }, [
-    dateState.monthSelected,
-    dateState.yearSelected,
-    walletState.gains,
-    walletState.expenses,
-  ]);
+    filteredGains.forEach((item) => {
+      totalGains += parseFloat(item.amount);
+    });
 
-  useEffect(() => {
-    function loaderBalance() {
-      let totalGains = 0;
-      let totalExpense = 0;
+    totalGains = round(totalGains);
 
-      walletState.gains.forEach((item) => {
-        totalGains += parseFloat(item.amount);
-      });
+    return totalGains.toString();
+  }, [dateState.monthSelected, dateState.yearSelected, walletState.gains]);
 
-      walletState.expenses.forEach((item) => {
-        totalExpense += parseFloat(item.amount);
-      });
+  const expense = useMemo(() => {
+    const filteredExpenses = filteredDate(
+      walletState.expenses,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
 
-      let balance = round(totalGains - totalExpense);
-      setBalance(balance.toString());
-    }
-    loaderBalance();
-    return () => {};
-  }, [walletState.gains, walletState.expenses]);
+    let totalExpenses = 0;
+
+    filteredExpenses.forEach((item) => {
+      totalExpenses += parseFloat(item.amount);
+    });
+
+    totalExpenses = round(totalExpenses);
+
+    return totalExpenses.toString();
+  }, [dateState.monthSelected, dateState.yearSelected, walletState.expenses]);
 
   return (
     <S.Container>
       <S.ItemHeader type={0}>
-        <TextAmount header={"Balance"} content={balance} typeBox={1}/>
+        <TextAmount header={"Balance"} content={balance} typeBox={1} />
         <TextIcon header={"Until today"} icon={faWallet} typeBox={4} />
       </S.ItemHeader>
       <S.ItemHeader type={1}>
-        <TextAmount header={"Total income"} content={income} typeBox={2}/>
+        <TextAmount header={"Total income"} content={income} typeBox={2} />
         <TextIcon
           header={`In ${dateState.monthSelected}`}
           icon={faLongArrowAltRight}
@@ -95,7 +84,7 @@ export function HeaderGraphics() {
         />
       </S.ItemHeader>
       <S.ItemHeader type={2}>
-        <TextAmount header={"Total expense"} content={expense} typeBox={2}/>
+        <TextAmount header={"Total expense"} content={expense} typeBox={2} />
         <TextIcon
           header={`In ${dateState.monthSelected}`}
           icon={faLongArrowAltRight}

@@ -10,7 +10,10 @@ import { Message } from "./Message";
 import { Relationship } from "./Relationship";
 
 import { filteredDate } from "../../utils/filteredDate";
+import { totalCurrency } from "../../utils/totalCurrency";
 import { round } from "../../utils/round";
+
+import { IObjData } from "../../@types/types";
 
 import * as S from "./styles";
 
@@ -118,6 +121,44 @@ export function Dashboard() {
     theme,
   ]);
 
+  const relationshipData = useMemo<IObjData[]>(() => {
+    let { totalExpenses, totalGains } = totalCurrency(
+      walletState.expenses,
+      walletState.gains,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
+
+    totalGains = round(totalGains) || 50;
+    totalExpenses = round(totalExpenses) || 50;
+
+    const total = totalGains + totalExpenses;
+
+    let incomePercent = Math.round((totalGains * 100) / total).toString();
+    let expensesPercent = Math.round((totalExpenses * 100) / total).toString();
+
+    return [
+      {
+        name: "Income",
+        amount: totalGains,
+        percent: incomePercent,
+        color: theme.colors.income,
+      },
+      {
+        name: "Expense",
+        amount: totalExpenses,
+        percent: expensesPercent,
+        color: theme.colors.expense,
+      },
+    ];
+  }, [
+    walletState.expenses,
+    walletState.gains,
+    dateState.monthSelected,
+    dateState.yearSelected,
+    theme,
+  ]);
+
   return (
     <S.Container>
       <Header title={"Dashboard"} />
@@ -130,7 +171,7 @@ export function Dashboard() {
             <Message />
           </S.MessageDiv>
           <S.RelationshipContainer>
-            <Relationship />
+            <Relationship data={relationshipData} />
           </S.RelationshipContainer>
         </S.RowContainer>
         <S.LineGraphic>

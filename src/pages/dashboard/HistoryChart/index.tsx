@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import {
   LineChart,
   Line,
@@ -29,8 +29,6 @@ export function HistoryChart() {
   const theme = useTheme();
   const walletState = useReduxSelector((state) => state.wallet);
   const dateState = useReduxSelector((state) => state.selectedDate);
-
-  const [data, setData] = useState<IDatas>([]);
 
   const sliceMonths = (
     months: IObjInput[],
@@ -67,7 +65,7 @@ export function HistoryChart() {
     return arrayMonths;
   };
 
-  useEffect(() => {
+  const data = useMemo<IDatas>(() => {
     const months = sliceMonths(
       dateState.months,
       dateState.monthSelected,
@@ -89,9 +87,14 @@ export function HistoryChart() {
       };
     });
 
-    setData(data);
-    return () => {};
-  }, [dateState, walletState]);
+    return data;
+  }, [
+    dateState.monthSelected,
+    dateState.yearSelected,
+    dateState.months,
+    walletState.expenses,
+    walletState.gains,
+  ]);
 
   return (
     <S.Container>
