@@ -7,10 +7,23 @@ export const Container = styled.div`
   height: auto;
 `;
 
-export const RowContainer = styled.div`
+export const FunctionBar = styled.div`
   width: 100%;
   height: auto;
   margin-top: 2rem;
+  padding: 0 2rem;
+
+  display: flex;
+
+  ${respondToDown.xs`
+    padding: 0;
+  `}
+`;
+
+export const RowContainer = styled.div`
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
   padding: 0 2rem;
 
   display: flex;

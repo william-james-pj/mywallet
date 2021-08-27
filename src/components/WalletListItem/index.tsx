@@ -11,6 +11,9 @@ interface IProps {
 export function WalletListItem({ item }: IProps) {
   return (
     <S.Container>
+      <S.Divider
+        recurrent={item.frequency === "Recurrent" ? true : false}
+      ></S.Divider>
       <S.IconContainer>
         <S.Icon></S.Icon>
       </S.IconContainer>
