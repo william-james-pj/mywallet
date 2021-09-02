@@ -14,6 +14,8 @@ export const FunctionBar = styled.div`
   padding: 0 2rem;
 
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   ${respondToDown.xs`
     padding: 0;

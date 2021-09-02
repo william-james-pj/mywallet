@@ -2,7 +2,9 @@ import { useState, useMemo } from "react";
 
 import { useReduxSelector } from "../../hooks/useRedux";
 
+import { ModalAdd } from "../../components/ModalAdd";
 import { Header } from "../../components/Header";
+import { ButtonAdd } from "../../components/ButtonAdd";
 import { FilterRecurrence } from "../../components/FilterRecurrence";
 import { WalletListItem } from "../../components/WalletListItem";
 import { filteredDate } from "../../utils/filteredDate";
@@ -14,6 +16,11 @@ export function CashIn() {
   const dateState = useReduxSelector((state) => state.selectedDate);
 
   const [filterValue, setFilterValue] = useState("all");
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleModal = () => {
+    setOpenModal(!openModal);
+  };
 
   const changeFilter = (value: string) => {
     setFilterValue(value);
@@ -47,16 +54,19 @@ export function CashIn() {
   ]);
 
   return (
-    <S.Container>
-      <Header title={"Cash in"} />
-      <S.FunctionBar>
-        <FilterRecurrence value={filterValue} change={changeFilter} />
-      </S.FunctionBar>
-      <S.RowContainer>
-        {data.map((item, index) => {
-          return <WalletListItem item={item} key={`${item.type}-${index}`} />;
-        })}
-      </S.RowContainer>
-    </S.Container>
+    <ModalAdd open={openModal} handleClose={handleModal} gains={true}>
+      <S.Container>
+        <Header title={"Cash in"} />
+        <S.FunctionBar>
+          <FilterRecurrence value={filterValue} change={changeFilter} />
+          <ButtonAdd onclick={handleModal} />
+        </S.FunctionBar>
+        <S.RowContainer>
+          {data.map((item, index) => {
+            return <WalletListItem item={item} key={`${item.type}-${index}`} />;
+          })}
+        </S.RowContainer>
+      </S.Container>
+    </ModalAdd>
   );
 }

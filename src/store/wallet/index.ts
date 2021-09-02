@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { WalletState } from "./types";
 
 import { data } from "../../database";
+
+import { IWalletItem } from "../../@types/types";
 
 const initialState: WalletState = {
   expenses: [],
@@ -17,8 +19,14 @@ const wallet = createSlice({
       state.expenses = data.expenses;
       state.gains = data.gains;
     },
+    addGains(state, action: PayloadAction<IWalletItem>) {
+      state.gains.push(action.payload);
+    },
+    addExpenses(state, action: PayloadAction<IWalletItem>) {
+      state.expenses.push(action.payload);
+    },
   },
 });
 
-export const { getData } = wallet.actions;
+export const { getData, addGains, addExpenses } = wallet.actions;
 export default wallet.reducer;
