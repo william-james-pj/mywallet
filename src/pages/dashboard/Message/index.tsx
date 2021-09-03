@@ -1,11 +1,18 @@
 import * as S from "./styles";
 
-export function Message() {
+interface IMessageProps {
+  data: {
+    title: string;
+    description: string;
+  };
+}
+
+export function Message({ data }: IMessageProps) {
   return (
     <S.Container>
       <S.TextContainer>
-        <S.Title>Very good!</S.Title>
-        <S.Text>Your wallet is positive.</S.Text>
+        <S.Title>{data.title}</S.Title>
+        <S.Text>{data.description}</S.Text>
       </S.TextContainer>
     </S.Container>
   );

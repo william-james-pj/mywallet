@@ -1,3 +1,5 @@
+import { formatCurrency } from "../../../../utils/formatCurrency";
+
 import * as S from "./styles";
 
 interface IProps {
@@ -10,7 +12,7 @@ export function TextAmount({ header, content, typeBox }: IProps) {
   return (
     <S.Container>
       <S.HeaderText colorType={typeBox}>{header}</S.HeaderText>
-      <S.ContentText>{`R$ ${content}`}</S.ContentText>
+      <S.ContentText>{`${formatCurrency(Number(content))}`}</S.ContentText>
     </S.Container>
   );
 }

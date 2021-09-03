@@ -1,6 +1,6 @@
 export const formatCurrency = (current: number): string => {
-  return current.toLocaleString("pt-br", {
+  return current.toLocaleString("en", {
     style: "currency",
-    currency: "BRL",
+    currency: "USD",
   });
 };

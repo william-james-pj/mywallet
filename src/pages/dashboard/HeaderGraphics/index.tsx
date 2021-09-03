@@ -21,17 +21,34 @@ export function HeaderGraphics() {
     let totalGains = 0;
     let totalExpense = 0;
 
-    walletState.gains.forEach((item) => {
+    const filteredGains = filteredDate(
+      walletState.gains,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
+
+    const filteredExpenses = filteredDate(
+      walletState.expenses,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
+
+    filteredGains.forEach((item) => {
       totalGains += parseFloat(item.amount);
     });
 
-    walletState.expenses.forEach((item) => {
+    filteredExpenses.forEach((item) => {
       totalExpense += parseFloat(item.amount);
     });
 
     let balance = round(totalGains - totalExpense);
     return balance.toString();
-  }, [walletState.expenses, walletState.gains]);
+  }, [
+    walletState.expenses,
+    walletState.gains,
+    dateState.monthSelected,
+    dateState.yearSelected,
+  ]);
 
   const income = useMemo(() => {
     const filteredGains = filteredDate(

@@ -129,8 +129,11 @@ export function Dashboard() {
       dateState.yearSelected
     );
 
-    totalGains = round(totalGains) || 50;
-    totalExpenses = round(totalExpenses) || 50;
+    const auxGains = totalExpenses !== 0 ? 0 : 50;
+    const auxExpenses = totalGains !== 0 ? 0 : 50;
+
+    totalGains = round(totalGains) || auxGains;
+    totalExpenses = round(totalExpenses) || auxExpenses;
 
     const total = totalGains + totalExpenses;
 
@@ -159,6 +162,54 @@ export function Dashboard() {
     theme,
   ]);
 
+  const messageData = useMemo(() => {
+    let title = "";
+    let description = "";
+
+    let totalGains = 0;
+    let totalExpense = 0;
+
+    const filteredGains = filteredDate(
+      walletState.gains,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
+
+    const filteredExpenses = filteredDate(
+      walletState.expenses,
+      dateState.monthSelected,
+      dateState.yearSelected
+    );
+
+    filteredGains.forEach((item) => {
+      totalGains += parseFloat(item.amount);
+    });
+
+    filteredExpenses.forEach((item) => {
+      totalExpense += parseFloat(item.amount);
+    });
+
+    let balance = round(totalGains - totalExpense);
+
+    if (balance > 0) {
+      title = "Very good!";
+      description = "Your wallet is positive.";
+    } else {
+      title = "That sad!";
+      description = "This month you spent more than you should.";
+    }
+
+    return {
+      title,
+      description,
+    };
+  }, [
+    walletState.expenses,
+    walletState.gains,
+    dateState.monthSelected,
+    dateState.yearSelected,
+  ]);
+
   return (
     <S.Container>
       <Header title={"Dashboard"} />
@@ -168,7 +219,7 @@ export function Dashboard() {
         </S.GraphicsHeader>
         <S.RowContainer>
           <S.MessageDiv>
-            <Message />
+            <Message data={messageData} />
           </S.MessageDiv>
           <S.RelationshipContainer>
             <Relationship data={relationshipData} />
